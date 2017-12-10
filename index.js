@@ -9,9 +9,9 @@ app.on('ready', ()=>{
 	
 	const modalPath = path.join('file://', __dirname, 'launcher/index.html')
 	let win = new BrowserWindow({
-  		frame: false,
+  		frame: true,
   		width: 600,
-		height: 60,
+		height: 800,
 		hasShadow: true,
 	})
 
@@ -20,17 +20,14 @@ app.on('ready', ()=>{
 	win.on('close', function () { win = null })
 	win.loadURL(modalPath)
 	win.show()
-	win.blur()
 	
-	globalShortcut.register('Alt+C', function () {
+	globalShortcut.register('Alt+L', function () {
 		if(!win.isFocused()){
 			win.focus()
+		}else{
+			win.blur()
 		}
 	})
 
-	globalShortcut.register('Esc',function(){
-		let curr = BrowserWindow.getFocusedWindow()
-		curr.blur()
-	})
 })
 

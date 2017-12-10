@@ -2,15 +2,32 @@
 <html>
 <head>
 	<title></title>
-	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script>if (window.module) module = window.module;</script>
-	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="../icomoon/style.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
 </head>
 <body>
-<span class="icon-console"></span>
-<input type="text" id="spotlight" placeholder="Enter shell command" />
+		<div id="header"></div>
+		<div id="container">
+		<div id="logcontainer">
+		  <ul>
+					
+			<li v-for="(log, index) in logs" v-bind:title="log.time">
+					
+			  <div class="card">
+					<span class='closing' v-bind:data-index='index' v-on:click="deleteLog(index)">x</span>
+					<p>{{log.text}}</p>  
+			  </div>
+			</li>
+		  </ul>
+		</div>
+		<div id="newlog">
+		  <textarea name="log" id="tarea" cols="100"></textarea>
+		</div>  
+		</div>
+		
+		<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
